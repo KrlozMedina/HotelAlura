@@ -16,9 +16,10 @@
 ## 🖥️ Tecnologías Utilizadas:
 
 - Java
-- Eclipse
-- Biblioteca JCalendar
-- MySql
+- Eclipse -> IntelliJ
+- Maven: 
+  - Biblioteca JCalendar
+  - MySql
 - Plugin WindowBuilder </br>
 
 ---
@@ -36,7 +37,7 @@
 ## 🔍 ¡Analizando nuestro repositorio!
 
 ### Este es el repositorio base de nuestro proyecto, en el encontrarás:
-#### 🔹 src/views: carpeta con toda la interfaz gráfica de las pantallas necesarias para desarrollar el programa;
+#### 🔹 src/org.krlozmedina.views: carpeta con toda la interfaz gráfica de las pantallas necesarias para desarrollar el programa;
 #### 🔹 src/imagenes: carpeta con imágenes que puedes usar en tu proyecto. Siéntete libre de usar otros, si lo deseas;
 </br>
 

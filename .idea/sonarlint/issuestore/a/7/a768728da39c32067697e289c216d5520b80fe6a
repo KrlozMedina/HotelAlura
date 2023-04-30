@@ -1,18 +1,0 @@
-
-b
-java:S1192F"GDefine a constant instead of duplicating this literal "Roboto" 8 times.(öãƒ§şÿÿÿÿ
-f	java:S117>"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(š©€œ
-k	java:S117V"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Á”ù´øÿÿÿÿ
-k	java:S117f"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ğò¦Öşÿÿÿÿ
-f	java:S117j"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(«¨øÏ
-l	java:S117¿"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(™ç‰Ôùÿÿÿÿ
-C
-java:S1604"(Make this anonymous inner class a lambda(¤©Òâüÿÿÿÿ
-:
-java:S1659"$Declare "yMouse" on a separate line.(³ºÃª
-d
-java:S3252-"IUse static access with "javax.swing.WindowConstants" for "EXIT_ON_CLOSE".(Õû»öşÿÿÿÿ
-Y
-java:S3252D">Use static access with "javax.swing.SwingConstants" for "TOP".( ˆøÿÿÿÿ
-
-java:S1186È"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ä Ïúüÿÿÿÿ
