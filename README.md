@@ -296,3 +296,30 @@ La pestaña de <em>Design</em> se abrirá por encima de la zona del <em>Console<
 💙 <strong>Alura Latam</strong></br>
 <a href="https://www.linkedin.com/company/alura-latam/mycompany/" target="_blank">
 <img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a>
+
+## Creando la base de datos
+
+```sql
+CREATE DATABASE hotel;
+
+USE hotel;
+
+CREATE TABLE reservas(
+	id INT NOT NULL AUTO_INCREMENT,
+    fecha_entrada DATE NOT NULL,
+    fecha_salida DATE NOT NULL,
+    valor INT NOT NULL,
+    forma_pago VARCHAR(45),
+    PRIMARY KEY (id));
+
+CREATE TABLE huespedes (
+  id INT NOT NULL AUTO_INCREMENT,
+  nombre VARCHAR(25) NOT NULL,
+  apellido VARCHAR(25) NOT NULL,
+  fecha_nacimiento DATE NOT NULL,
+  nacionalidad VARCHAR(45) NULL,
+  telefono LONG NOT NULL,
+  id_reserva INT,
+  PRIMARY KEY (id),
+  FOREIGN KEY (id_reserva) REFERENCES reservas(id));
+```
