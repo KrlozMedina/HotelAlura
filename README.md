@@ -1,170 +1,228 @@
-# Challenge ONE | Java | Back-end | Hotel Alura
+# Hotel Alura (Plataforma de reservas y huespedes)
+
+![](https://img.shields.io/github/stars/KrlozMedina/HotelAlura)
+![](https://img.shields.io/github/forks/KrlozMedina/HotelAlura)
+![](https://img.shields.io/github/tag/KrlozMedina/HotelAlura)
+![](https://img.shields.io/github/release/KrlozMedina/HotelAlura)
+![](https://img.shields.io/github/issues/KrlozMedina/HotelAlura)
+
+## Descripción
+
+¡Bienvenido al más reciente desafío del
+[Challenge Java](https://www.aluracursos.com/challenges/oracle-one-back-end/hotelalura)!
 
 <p align="center" >
      <img width="300" heigth="300" src="https://user-images.githubusercontent.com/91544872/189419040-c093db78-c970-4960-8aca-ffcc11f7ffaf.png">
 </p>
 
----
-##  Primeros Pasos:
+El Hotel Alura conocido por su espectaculares instalaciones y paquetes
+promocionales para Desarrolladores de Software está teniendo problemas
+para llevar el control de las reservaciones hechas por sus clientes, por
+eso solicitan nuestra ayuda para desarrollar un sistema de reserva que
+contenga:
 
+1. Sistema de autenticación de usuario para que solo usuarios pertenecientes
+al hotel consigan acceder al sistema.
 
-#### 🔹 Marca este proyecto con una ⭐
-#### 🔹 Sigue las orientaciones que tenemos en este repositorio. 📚
-#### 🔹 ¡Visita la página del desafío haciendo clic aquí! [Link do Challenge](https://www.aluracursos.com/challenges/oracle-one-back-end/hotelalura) 📃
-</br>
+2. Permitir crear, editar y eliminar una reserva para los clientes.
 
-## 🖥️ Tecnologías Utilizadas:
+3. Buscar en la base de datos todas las informaciones tanto de los clientes
+como de las reservas.
 
-- Java
-- Eclipse -> IntelliJ
-- Maven: 
-  - Biblioteca JCalendar
-  - MySql
-- Plugin WindowBuilder </br>
+4. Registrar, editar y eliminar datos de los huéspedes.
 
----
-## ⚠️ Importante! ⚠️
+5. Calcular el valor de la reserva en base a la cantidades de días de la
+reserva y a una tasa diaria que puede ser asignada por ti y en la moneda
+local de tu país, por ejemplo si tenemos una reserva de 3 dias y el valor
+de nuestra diaria son 20$ debemos multiplicar esos 3 dias por el valor de
+la diaria, lo que serian 60$, todo esto deberá ser hecho automaticamente y
+mostrado al usuario antes de guardar la reserva.
 
-☕ Use Java versión 8 o superior para compatibilidad. </br></br>
-📝 Recomendamos usar el editor de Eclipse para compatibilidad con la Interfaz Gráfica. </br></br>
-🎨 La interfaz contiene dos métodos importantes:
-- setResizable(false): determina el tamaño de la ventana, y a través del parámetro <strong>false</strong>, la pantalla no se puede maximizar;
-- setLocationRelativeTo(null): determina la ubicación de la ventana, y a través del parámetro <strong>null</strong> la mantiene centrada en la pantalla.
+6. Base de datos para almacenar todos los datos pedidos anteriormente.
 
-#### Para este desafío, concéntrate en la parte lógica y la conexión con la base de datos, después de completar el desafío, siéntete libre de agregar nuevas funciones y modificar la interfaz gráfica.
----
+Ahora te preguntarás ¿Cómo se que datos debo registrar? Para eso el líder
+del proyecto puso a disposición un Diagrama de Entidad Relación que usaremos
+para crear las tablas en nuestra base de Datos y que está anexado a esta
+tarjeta y que también estará como una tarea en nuestro backlog de [Trello](https://trello.com/b/ChK4w5Be/challenge-2-alura).
 
-## 🔍 ¡Analizando nuestro repositorio!
+![Diagrama de entidad-relacion](Images/Diagrama entidad-relacion.png)
 
-### Este es el repositorio base de nuestro proyecto, en el encontrarás:
-#### 🔹 src/org.krlozmedina.views: carpeta con toda la interfaz gráfica de las pantallas necesarias para desarrollar el programa;
-#### 🔹 src/imagenes: carpeta con imágenes que puedes usar en tu proyecto. Siéntete libre de usar otros, si lo deseas;
-</br>
+## Tabla de contenido
 
-## ⬇️ Download
+- [Estado del proyecto](#estado-del-proyecto)
+  - [Menu principal de la aplicacion 🏁](#menu-principal-de-la-aplicacion-)
+  - [Ventana de login ⏸️](#ventana-de-login-)
+  - [Ventana de menu de usuario 💻](#ventana-de-menú-usuario-)
+  - [Ventana registro de reservas 💻](#ventana-registro-de-reservas-)
+  - [Ventana de registro de huesped 💻](#ventana-de-registro-de-huésped-)
+  - [Sistema de busqueda ⛔️](#sistema-de-búsqueda-)
+  - [Editar datos reservas ⛔️](#editar-datos-reservas-)
+  - [Editar datos huesped ⛔️](#editar-datos-huésped-)
+  - [Eliminar datos reserva ⛔️](#eliminar-datos-reservas-)
+  - [Eliminar datos huesped ⛔️](#eliminar-datos-huésped-)
+- [Instalacion](#instalación)
+- [Uso](#uso)
+- [Contribucion](#contribución)
+- [Estructura del proyecto](#estructura-del-proyecto)
+- [Dependencias](#dependencias)
+- [Ejemplos](#ejemplos)
+  - [Cursos](#cursos)
+  - [Articulos](#artículos)
+  - [Alura +](#alura-)
+- [Documentacion adicional](#documentación-adicional)
+- [Licencia](#licencia)
+- [Contacto](#contacto)
 
-### Cómo descargar:
+## Estado del proyecto
 
-#### 🔹 Fork
+Recuerda que el código fuente con la parte gráfica de nuestro menú principal
+al igual que todas las imagenes usadas en el sistema, se encuentran en el
+[Repositório Base](https://github.com/alura-challenges/challenge-one-alura-hotel-latam.git)
+del proyecto.
 
-1 - Haz el <strong>fork</strong> del proyecto. En la parte superior derecha, al hacer clic en el icono se creará un repositorio del proyecto en tu cuenta personal de GitHub. </br>
+### Menu principal de la aplicacion 🏁
 
-<p align="center" >
-     <img width="600" heigth="600" src="https://user-images.githubusercontent.com/101413385/169404781-7df6355b-3a15-472a-8d8e-fdb84d91a7bd.png">
-</p>
+El menú principal de nuestra aplicación es nuestra presentación, podemos ver que contiene diferentes elementos:
 
-2 - Una vez que tengas el repositorio "forkado" en tu cuenta, comprueba si la URL de la página es la del repositorio de tu cuenta.
+- Imagen de wallpaper
+- Logo del Hotel
+- Botón Login que al ser clickado debe llevar a la ventana de iniciar sesión
+- Botón salir que debe preguntar al usuario si realmente desea salir de la aplicación.
 
-<p align="center" >
-     <img width="600" heigth="600" src="https://user-images.githubusercontent.com/101413385/173256272-6dd3eaba-b52e-42ec-b307-17ed785f9110.png">
-</p>
+### Ventana de login ⏸️
 
-3 - Haz clic en la opción <strong>Code</strong>. Se mostrarán tres formas de instalar el repositorio en su máquina, y destacamos dos:
+Esta ventana debe permitir al usuario ingresar su usuario y contraseña.
 
-<p align="center" >
-     <img width="600" heigth="600" src="https://user-images.githubusercontent.com/101413385/173166461-e62d9704-98d5-4773-a60e-57d5729575ae.png">
-</p></br>
+Por detrás de la cortina debemos verificar si los datos ingresados son
+correctos o incorrectos y notificar al usuario de este estatus, por
+ejemplo si los datos son incorrectos debe ser mostrado una mensaje al
+usuario diciendo "Usuario y Contraseña inválidos"
 
-#### 🔹 Clonar o descargar el ZIP
+Para realizar esta tarea puedes crear usuarios predeterminados a través
+del código, que seria una opción más simple, o crear una tabla en tu base
+de datos para realizar esta autenticación e inclusive adicionar nuevos
+usuários.
 
-1 - Para clonar, simplemente copia el <em>url</em> resaltado en la imagen y ubicado justo debajo del HTTPS, crea una carpeta en tu computadora, abre el <em>cmd</em> o el <em>git bash</em> dentro de esa carpeta y luego ingresa el comando <strong>git clone</strong> y con el botón derecho del mouse dentro del terminal haz click en la opcion <strong>Paste</strong> para pegar el <em>url</em> y presiona <em>Enter</em>. 
+### Ventana de Menú Usuario 💻
 
-<p align="center" >
-     <img width="600" heigth="600" src="https://user-images.githubusercontent.com/101413385/173256523-79d38ee2-8668-435c-b31a-ac6ba78bb813.png">
-</p>
+En esta ventana se presentarán las opciones cuando el usuario autenticado
+está dentro del sistema, tienes las siguientes opciones:
 
-2 - La segunda opción es descargar el código en un paquete <strong>"zipado"</strong> y extraer la carpeta a tu computadora.
-</br></br>
+- Reservar: Deve llevar a la ventana de Reservas 
+- Búsqueda: Deve llevar a la ventana de Sistema de búsqueda. 
+- Salir del Sistema: Deve llevar a la ventana de Login
 
-## 📝 Eclipse
+### Ventana Registro de Reservas 💻
 
-### ¿Cómo importar mi proyecto a Eclipse?
+La ventana de Reservas debe permitir al usuário registrar los siguientes
+datos:
 
-1 - Una vez dentro del Editor al lado izquierdo, haz clic en el <em>Files</em> que está en el menú en la parte superior, elige la opción <em>Open Projects from File System</em>.
+- Día de Entrada 
+- Día de Salida 
+- Valor de la reserva, que será calculado en base a un valor de diaria fijo
+que tú mismo podrás elegir.
+- Forma de Pago donde el usuário podrá elegir entre:
+  - Tarjeta de crédito 
+  - Tarjeta de débito 
+  - Dinero en efectivo 
+- Botón continuar
 
-<p align="center" >
-     <img width="400" heigth="400" src="https://user-images.githubusercontent.com/101413385/173164237-1db32d79-2b35-433f-817c-ec3fa30899fc.png">
-</p>
+Es importante que al momento de guardar nuestros datos sea generado un
+número de reserva que será utilizado en la sección de registro de huéspedes
+de forma automática ya que será un campo que el usuário no podrá manipular.
 
-Luego haz click en <em>Directory</em> y ubica el directorio del proyecto "clonado" o "extraído" en tu computadora. Haz click en <em>Finish</em> para completar la importación.
+Recuerda que debes notificar al usuário tanto para registro satisfactorio
+de los datos como si ocurrió algún error.
 
-<p align="center" >
-     <img width="600" heigth="600" src="https://user-images.githubusercontent.com/101413385/173110215-f9451a5e-a9eb-4056-aec8-6eb3e3601e53.png">
-</p>
+Te dejamos algunos artículos que pueden ayudarte en la realización de esta actividad:
 
-2 - La segunda forma de importar es en <em>File</em> en la opción <em>Import</em>. O a través del <strong>Project Explorer</strong> haz clic en el campo vacío con el botón derecho del mouse y elijas la opción <strong>Import</strong>.
+- [Redondeo y números gigantes: de double a BigDecimal](https://www.aluracursos.com/blog/redondeo-y-numeros-gigantes-de-double-a-bigdecimal)
+- [Cómo convertir de String para Date en Java](https://www.aluracursos.com/blog/como-convertir-string-para-date-en-java)
 
-<p align="center" >
-     <img width="400" heigth="400" src="https://user-images.githubusercontent.com/101413385/173111357-2ec928ac-5a3d-4f7c-ba84-8906d84bfd08.png">
-</p>
+### Ventana de Registro de Huésped 💻
 
-<p align="center" >
-     <img width="400" heigth="400" src="https://user-images.githubusercontent.com/101413385/169431325-23a2e3cb-85a3-4298-8e60-64dfa58e2e6f.png">
-</p>
+Esta sección tendrá los datos personales de los huéspedes con los
+siguientes campos:
 
-Si te decides por el <strong>Import</strong>, se abrirá la ventana correspondiente. Haz clic en la opción <em>Existing Projects Into Workspace</em> y en el botón <em>Next</em>.
+- Nombre 
+- Apellido 
+- Fecha de Nacimiento 
+- Nacionalidad 
+- Teléfono 
+- Número de reserva que fue generada anteriormente.
 
-<p align="center" >
-     <img width="600" heigth="600" src="https://user-images.githubusercontent.com/101413385/169431890-27f40955-27d8-4b4d-82df-d3507f85de6c.png">
-</p>
+Recuerda que debes notificar al usuário tanto para registro satisfactorio
+de los datos como si ocurrió algún error.
 
-Luego haz clic en el botón <em>Browse</em> y busca el proyecto en el directorio local.
+Mostrar como mensaje al usuário el número de reserva.
 
-<p align="center" >
-     <img width="600" heigth="600" src="https://user-images.githubusercontent.com/101413385/169432246-a769555c-daf9-490e-a0c7-908f7e5de967.png">
-</p>
+### Sistema de Búsqueda ⛔️
 
-## 📅 JCalendar
+Esta sección debe permitir al usuario buscar las informaciones que están
+dentro de nuestra base de datos.
 
-Tras realizar la importación a tu editor, es necesario instalar la librería <strong>JCalendar</strong>, de lo contrário, el proyecto presentará un error y no será posible abrir la ventana de <strong>Reservas</strong>. </br>
+Existen dos critério de búsqueda:
 
-Para instalar, se necesita descargar el paquete a través de ese enlace: 
-🔹 [Link para el JCalendar](https://toedter.com/jcalendar/)
+- Apellido 
+- Número de Reserva
 
-<p align="center" >
-     <img width="600" heigth="600" src="https://user-images.githubusercontent.com/101413385/169592420-7ea798d4-b7d2-4fd6-a03c-75f0fbc2e4bc.png">
-</p>
+Estos datos serán presentado a través de dos tablas, al seleccionar
+cualquier registro el usuario podrá, editar o eliminar dicho registro.
 
-El siguiente paso es extraer los archivos a una carpeta e importar los archivos desde la carpeta <strong>lib</strong> a una carpeta local e importar los archivos a Eclipse.
+### Editar Datos Reservas ⛔️
 
-<p align="center" >
-     <img width="500" heigth="500" src="https://user-images.githubusercontent.com/101413385/173167366-664a8876-a5c9-45d1-880d-650fbd6f8b07.png">     
-</p>
+Si el usuario necesita hacer la edición de alguna información, al hacer
+click en el registro que se desea modificar y en el icono de editar debe
+conseguir editar los datos y una vez hecha la modificación el usuario
+deverá ser notificado de que los cambios fueron guardados o si hubo algún
+error.
 
-Archivos de carpeta <strong>lib</strong>:
+### Editar Datos Huésped ⛔️
 
-<p align="center" >
-     <img width="500" heigth="500" src="https://user-images.githubusercontent.com/101413385/173699122-00cc4055-2098-4bba-8d3b-3bd252013116.png">
-</p>
+Si el usuario necesita hacer la edición de alguna información, al hacer
+click en el registro que se desea modificar y en el icono de editar debe
+conseguir editar los datos y una vez hecha la modificación el usuario
+deverá ser notificado de que los cambios fueron guardados o si hubo algún
+error.
 
-Haz click con el botón derecho encima del proyecto ubicado en el <strong>Package Explorer</strong>, elijas la opción <em>Build Path</em> y <em>Configure Build Path</em>.
+### Eliminar Datos Reservas ⛔️
 
-<p align="center" >
-     <img width="500" heigth="500" src="https://user-images.githubusercontent.com/101413385/173167991-44b111ca-c2d6-4d83-b225-33eb2657448f.png">
-</p>
+Si el usuario necesita eliminar algún registro, al hacer click en el
+registro que se desea eliminar y en el icono de eliminar debe conseguir
+eliminar los datos y una vez hecha la eliminación el usuario deverá ser
+notificado de que los cambios fueron hechos o si hubo algún error, además
+de actualizar los datos de la tabla y mostrarlo en pantalla
 
-El proyecto tendrá un mensaje de error que indica que la ruta de la biblioteca no existe en tu computadora. Haz click en <em>Libraries</em>, luego en <em>Classpath</em> seleccione el archivo JCalendar, elije la opción <em>Remove</em> y <em>Apply and Close</em>.
+Tip: Para actualizar la base de datos después de eliminar algún registro
+tal vez podamos llamar nuevamente a nuestro método Buscar.
 
-<p align="center" >
-     <img width="600" heigth="600" src="https://user-images.githubusercontent.com/101413385/173167817-ddbdedc5-c4a6-4f6d-bd86-f86a153d6b88.png">
-</p>
+### Eliminar Datos Huésped ⛔️
 
-Para importar el <strong>Jcalendar</strong> desde tu computadora, después de haber "extraído" los archivos de la descarga, pulsa en <em>ClassPath</em> y luego en <em>Add External JARS</em> agrega uno por uno  o selecciona todos de una vez y haz click en <em>Apply and Close</em>.
+Si el usuario necesita eliminar algún registro, al hacer click en el
+registro que se desea eliminar y en el icono de eliminar debe conseguir
+eliminar los datos y una vez hecha la eliminación el usuario deverá ser
+notificado de que los cambios fueron hechos o si hubo algún error, además
+de actualizar los datos de la tabla y mostrarlo en pantalla
 
-<p align="center" >
-     <img width="600" heigth="600" src="https://user-images.githubusercontent.com/101413385/169596029-a9fa21ef-8d90-45a6-8aa2-be2d911d4074.png">
-</p>
+**Tip**: Para actualizar la base de datos después de eliminar algún registro
+tal vez podamos llamar nuevamente a nuestro método Buscar.
 
-Por lo tanto, el proyecto debe contener los siguientes archivos después de las importaciones:
+## Instalación
+Instrucciones paso a paso para instalar y configurar el proyecto en un entorno local o en la nube.
 
-<p align="center" >
-     <img width="600" heigth="600" src="https://user-images.githubusercontent.com/101413385/173695620-7a4893e9-b9a1-44d6-8b70-c94a85ea891e.png">
-</p>
+### ⚠️ Importante! ⚠️
+- ☕ Use Java versión 8 o superior para compatibilidad.
+- 📝 Recomendamos usar el editor de Eclipse para compatibilidad con la Interfaz Gráfica.
+- 🎨 La interfaz contiene dos métodos importantes:
+  - setResizable(false): determina el tamaño de la ventana, y a través del parámetro false, la pantalla no se puede maximizar;
+  - setLocationRelativeTo(null): determina la ubicación de la ventana, y a través del parámetro null la mantiene centrada en la pantalla.
 
+## Uso
+Explica cómo utilizar el proyecto, cómo ejecutarlo y cómo interactuar con él.
 
-## 🚧 Proyecto
+### 🚧 Proyecto
 
-#### Al clonar o descargar el proyecto base y tener instalado el JCalendar, tendrás esta presentación al ejecutar el proyecto en Eclipse:
+Al clonar o descargar el proyecto base y tener instalado el JCalendar, tendrás esta presentación al ejecutar el proyecto en Eclipse:
 
 <p align="center" >
      <img width="700" heigth="700" src="https://user-images.githubusercontent.com/91544872/189419249-06b539da-7cf2-4d40-a711-618a5c872096.png">
@@ -190,114 +248,7 @@ Luego haz clic en <em>General</em> y en <em>Workspace</em>. Si tu <em>Text File 
      <img width="500" heigth="500" src="https://user-images.githubusercontent.com/101413385/173691963-1e3d966e-5162-4393-9232-d5d395d5440f.png">
 </p>
 
-## 📊 Base de Dados
-
-### ¿Cómo importar MySqlConnector al proyecto?
-
-Es la misma ruta descrita para importar el <strong>JCalendar</strong>, haga clic con el botón derecho en el proyecto, <em>Build Path</em>, <em>Configure Build Path</em>, <em>Libraries</em>, <em>Add External JARs</em>. Para encontrar la ruta de este archivo <strong>.jar</strong>, ve al disco duro de tu computadora e ingresa a la carpeta  <em>Archivos de Programas (x86)</em>.
-
-- Archivos de Programas (x86):
-<p align="center" >
-     <img width="500" heigth="500" src="https://user-images.githubusercontent.com/101413385/173169394-a67b528a-c8b7-4f7a-b374-a1da81b1cc5d.png">
-</p>
-
-- MySQL
-<p align="center" >
-     <img width="500" heigth="500" src="https://user-images.githubusercontent.com/101413385/173169551-b32a9978-3a05-4b6e-b077-f586d0c41e31.png">
-</p>
-
-- Connector J 8.0:
-
-<p align="center" >
-     <img width="500" heigth="500" src="https://user-images.githubusercontent.com/101413385/173169584-48e21a03-e70f-4a65-9197-448a3645f526.png">
-</p>
-
-- My SQL Connector Java:
-<p align="center" >
-     <img width="500" heigth="500" src="https://user-images.githubusercontent.com/101413385/173169737-5f93868e-df8f-4177-90ba-faf9570758ac.png">
-</p>
-
-### Modelado de tablas:
-
-Para este reto te proponemos dos tablas: <strong>Reservas</strong> y <strong>Huéspedes</strong>. La tabla de huéspedes debe contener la clave externa <em>(foreign key)</em> <strong>idReserva</strong>.
-
-<p align="center" >
-     <img width="500" heigth="500" src="https://user-images.githubusercontent.com/101413385/169529338-09a4d4c2-1b5a-41dc-b305-38498ebc29a8.png">
-</p>
-
-
-## 🗔 Plugin WindowBuilder
-
-En el menú de <strong>Eclipse</strong>, ir a la pestaña <em>Help</em> y seleccione la opción <em>Eclipse Marketplace</em>.
-
-<p align="center" >
-     <img width="500" heigth="500" src="https://user-images.githubusercontent.com/101413385/173254683-a4d27b04-3994-4c7b-bf70-6e1b665a5452.png">
-</p>
-
-En la barra de búsqueda, ingresa <strong>window builder</strong> y haz click en <em>Go</em>. Después de la búsqueda, selecciona la primera opción y haz click en <em>Install</em>.
-
-<p align="center" >
-     <img width="500" heigth="500" src="https://user-images.githubusercontent.com/101413385/173254936-b1ed41ba-af1b-47ae-bf75-00de4a22ff19.png">
-</p>
-
-En la siguiente ventana, selecciona el botón <em>Confirm</em>.
-
-<p align="center" >
-     <img width="500" heigth="500" src="https://user-images.githubusercontent.com/101413385/173255237-94789460-0544-4dd3-b00d-2738b83bd575.png">
-</p>
-
-Haz click en la opción para aceptar los Términos de Uso, y para finalizar haz clic en <em>Finish</em>.
-
-<p align="center" >
-     <img width="500" heigth="500" src="https://user-images.githubusercontent.com/101413385/173255298-05ac80f1-3e93-4097-90af-7fc8a4fa1611.png">
-</p>
-
-Después de la instalación, será necesario reiniciar el <strong>Eclipse</strong>.
-
-### ¿Cómo abrir cada ventana de diseño?
-
-Una vez que completes el desafío, si quieres explorar el <em>Window Builder</em> y agregar nuevas ventanas, o cambiar el diseño de las existentes, haz clic en el archivo <strong>.java</strong>, y luego en <em>Open With</em> y finalmente en <em>Window Builder Editor</em>.
-
-<p align="center" >
-     <img width="500" heigth="500" src="https://user-images.githubusercontent.com/101413385/173681973-5699a164-b66d-49f5-87c1-5436dd425457.png">
-</p>
-
-La pestaña de <em>Design</em> se abrirá por encima de la zona del <em>Console</em>. ¡Aquí puedes liberar al artista que llevas dentro de ti!
-
-<p align="center" >
-     <img width="500" heigth="500" src="https://user-images.githubusercontent.com/101413385/173682648-4c371224-fe4b-4e57-a3ee-9298a4d44554.png">
-</p>
-
-## 📬 Entrega
-
-### ¿Cómo incluir mi proyecto con el "#" del desafío?
-
-1) Ten el <strong>Fork</strong> del proyecto en tu repositorio en Github.
-2) Utiliza el topico **challengeonehotelaluralatam4** </br>
-3) Ve a la pestaña derecha de tu proyecto y haz clic en el engranaje de configuración en la sección <em>About</em>, selecciona el campo **topics** e inserae la etiqueta **challengeonehotelaluralatam4**
-
-
-### ¿Cómo hago la entrega final de mi Proyecto?
-
-4) Rellena el siguiente formulario con tus datos personales, junto con el enlace de tu repositorio. 🔹 [Link para o formulário](https://lp.alura.com.br/alura-latam-entrega-challenge-one-esp-back-end)
-
-<p align="center" >
-     <img width="700" heigth="700" src="https://user-images.githubusercontent.com/91544872/218745016-7d4582b1-0a7a-4501-a2a5-2b57da523635.png">
-</p>
-
-5) Ve a tu correo electrónico y canjea tu insignia obtenida al completar otro desafío del Proyecto ONE! 🏆
-
-6) ¡No olvides poner un enlace o video de tu proyecto en Linkedin! Etiqueta a #Oracle y #AluraLatam 🏁
-
-🧡 <strong>Oracle</strong></br>
-<a href="https://www.linkedin.com/company/oracle/" target="_blank">
-<img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a>
-
-💙 <strong>Alura Latam</strong></br>
-<a href="https://www.linkedin.com/company/alura-latam/mycompany/" target="_blank">
-<img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a>
-
-## Creando la base de datos
+### Creando la base de datos
 
 ```sql
 CREATE DATABASE hotel;
@@ -323,3 +274,49 @@ CREATE TABLE huespedes (
   PRIMARY KEY (id),
   FOREIGN KEY (id_reserva) REFERENCES reservas(id));
 ```
+
+## Contribución
+Si permites contribuciones de la comunidad, proporciona pautas claras para que otros puedan colaborar en el proyecto. Incluye información sobre el proceso de solicitud de extracción (pull request) y las reglas de estilo de código si corresponde.
+
+## Estructura del proyecto
+Si el proyecto tiene una estructura de directorios específica, menciona los directorios clave y su propósito.
+
+## Dependencias
+Enumera las dependencias externas necesarias para ejecutar el proyecto, incluyendo bibliotecas y frameworks, y cómo instalarlas.
+
+- Java
+- Eclipse -> IntelliJ 
+- Maven:
+  - Biblioteca JCalendar 
+  - MySql 
+- Plugin WindowBuilder
+
+## Ejemplos
+
+### Cursos
+- [Java: Dominando las Collections](https://www.aluracursos.com/curso-online-java-dominando-collections)
+- [Introducción a SQL con MySQL: Manipule y consulte datos](https://app.aluracursos.com/course/introduccion-sql-mysql-manipule-consulte-datos)
+- [Java y JDBC: Trabajando con una Base de Datos](https://app.aluracursos.com/course/java-jdbc-trabajando-base-datos)
+
+### Artículos
+- [Conociendo JDBC](https://www.aluracursos.com/blog/conociendo-el-jdbc)
+- [¿Qué es la biblioteca Swing?](https://www.aluracursos.com/blog/biblioteca-swing)
+- [Redondeo de números en Java](https://www.aluracursos.com/blog/redondeo-de-numeros-en-java)
+- [Redondeo y números gigantes: de double a BigDecimal](https://www.aluracursos.com/blog/redondeo-y-numeros-gigantes-de-double-a-bigdecimal)
+- [Cómo convertir de String para Date en Java](https://www.aluracursos.com/blog/como-convertir-string-para-date-en-java)
+- [MySQL: desde la descarga e instalación hasta su primera tabla](https://www.aluracursos.com/blog/mysql-desde-la-descarga-e-instalacion-hasta-su-primera-tabla)
+- [Interfaces Gráficas con Eclipse WindowBuilder](https://www.aluracursos.com/blog/interfaces-graficas-con-eclipse-windowbuilder?utm_source=gnarus&utm_medium=timeline)
+- [¿Qué es la biblioteca Swing?](https://www.aluracursos.com/blog/biblioteca-swing)
+
+### Alura +
+- [Simplificando tu código en Java: Conoce los enum](https://www.youtube.com/watch?v=EoPvlE85XAQ&t=43s&ab_channel=AluraLatam)
+- [¿Que son anotaciones en java?](https://app.aluracursos.com/extra/alura-mais/que-son-anotaciones-en-java--c230)
+
+## Documentación adicional
+Si hay documentación adicional disponible, como una wiki o una documentación más extensa, menciona los enlaces relevantes.
+
+## Licencia
+Especifica la licencia del proyecto para que los usuarios sepan los términos bajo los cuales pueden utilizarlo.
+
+## Contacto
+Proporciona información de contacto, como una dirección de correo electrónico o un enlace a la página de contacto, para que los usuarios puedan comunicarse contigo si tienen preguntas o problemas.
