@@ -16,13 +16,30 @@ public class HuespedesController {
             Date fechaNacimiento,
             String nacionalidad,
             long telefono,
-            Integer idReserva) {
-        Huesped huesped = new Huesped(nombre, apellido, fechaNacimiento, nacionalidad, telefono, idReserva);
+            Reserva reserva) {
+        Huesped huesped = new Huesped(nombre, apellido, fechaNacimiento, nacionalidad, telefono, reserva);
         EntityManager em = UtilsJPA.getEntityManager();
         HuespedesDAO huespedesDAO = new HuespedesDAO(em);
 
         em.getTransaction().begin();
         huespedesDAO.save(huesped);
+        em.getTransaction().commit();
+        em.close();
+    }
+
+    public Huesped find(Integer id) {
+        EntityManager em = UtilsJPA.getEntityManager();
+        HuespedesDAO huespedesDAO = new HuespedesDAO(em);
+
+        return huespedesDAO.find(id);
+    }
+
+    public void delete(Huesped huesped) {
+        EntityManager em = UtilsJPA.getEntityManager();
+        HuespedesDAO huespedesDAO = new HuespedesDAO(em);
+
+        em.getTransaction().begin();
+        huespedesDAO.delete(huesped);
         em.getTransaction().commit();
         em.close();
     }

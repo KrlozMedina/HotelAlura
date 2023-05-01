@@ -2,6 +2,7 @@ package org.krlozmedina.views;
 
 import com.toedter.calendar.JDateChooser;
 import org.krlozmedina.controller.HuespedesController;
+import org.krlozmedina.model.Reserva;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -45,7 +46,7 @@ public class RegistroHuesped extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public RegistroHuesped(Integer idReserva) {
+	public RegistroHuesped(Reserva reserva) {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(RegistroHuesped.class.getResource("/imagenes/lOGO-50PX.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 910, 634);
@@ -246,7 +247,7 @@ public class RegistroHuesped extends JFrame {
 							txtFechaN.getDate(),
 							txtNacionalidad.getSelectedItem().toString(),
 							Long.valueOf(txtTelefono.getText()),
-							idReserva
+							reserva
 					);
 
 					Exito exito = new Exito();

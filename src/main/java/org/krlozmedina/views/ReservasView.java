@@ -2,6 +2,7 @@ package org.krlozmedina.views;
 
 import com.toedter.calendar.JDateChooser;
 import org.krlozmedina.controller.ReservasController;
+import org.krlozmedina.model.Reserva;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -295,12 +296,12 @@ public class ReservasView extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				if (ReservasView.txtFechaEntrada.getDate() != null && ReservasView.txtFechaSalida.getDate() != null) {
 					if (Integer.valueOf(txtValor.getText()) > 0) {
-						int idReserva = ReservasController.save(
+						Reserva reserva = ReservasController.save(
 								txtFechaEntrada.getDate(),
 								txtFechaSalida.getDate(),
 								Integer.valueOf(txtValor.getText()),
 								txtFormaPago.getItemAt(txtFormaPago.getSelectedIndex()));
-						RegistroHuesped registro = new RegistroHuesped(idReserva);
+						RegistroHuesped registro = new RegistroHuesped(reserva);
 						registro.setVisible(true);
 						dispose();
 					} else {

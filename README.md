@@ -293,6 +293,11 @@ Enumera las dependencias externas necesarias para ejecutar el proyecto, incluyen
 
 ## Ejemplos
 
+- [Solución del Challenge Hotel Alura parte 1](https://www.youtube.com/watch?v=1luEBNCweG4&ab_channel=AluraLatam)
+- [Solución del Challenge ONE Hotel Alura](https://www.youtube.com/watch?v=8y5fqKVfDWU&ab_channel=AluraLatam)
+
+## Documentación adicional
+
 ### Cursos
 - [Java: Dominando las Collections](https://www.aluracursos.com/curso-online-java-dominando-collections)
 - [Introducción a SQL con MySQL: Manipule y consulte datos](https://app.aluracursos.com/course/introduccion-sql-mysql-manipule-consulte-datos)
@@ -311,9 +316,6 @@ Enumera las dependencias externas necesarias para ejecutar el proyecto, incluyen
 ### Alura +
 - [Simplificando tu código en Java: Conoce los enum](https://www.youtube.com/watch?v=EoPvlE85XAQ&t=43s&ab_channel=AluraLatam)
 - [¿Que son anotaciones en java?](https://app.aluracursos.com/extra/alura-mais/que-son-anotaciones-en-java--c230)
-
-## Documentación adicional
-Si hay documentación adicional disponible, como una wiki o una documentación más extensa, menciona los enlaces relevantes.
 
 ## Licencia
 Especifica la licencia del proyecto para que los usuarios sepan los términos bajo los cuales pueden utilizarlo.

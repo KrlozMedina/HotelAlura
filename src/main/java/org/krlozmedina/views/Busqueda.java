@@ -1,5 +1,14 @@
 package org.krlozmedina.views;
 
+import org.krlozmedina.controller.HuespedesController;
+import org.krlozmedina.controller.ReservasController;
+import org.krlozmedina.dao.HuespedesDAO;
+import org.krlozmedina.dao.ReservasDAO;
+import org.krlozmedina.model.Huesped;
+import org.krlozmedina.model.Reserva;
+import org.krlozmedina.utils.UtilsJPA;
+
+import javax.persistence.EntityManager;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
@@ -7,6 +16,10 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 
 @SuppressWarnings("serial")
 public class Busqueda extends JFrame {
@@ -24,18 +37,18 @@ public class Busqueda extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Busqueda frame = new Busqueda();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					Busqueda frame = new Busqueda();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the frame.
@@ -55,14 +68,15 @@ public class Busqueda extends JFrame {
 		txtBuscar = new JTextField();
 		txtBuscar.setBounds(536, 127, 193, 31);
 		txtBuscar.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+		txtBuscar.setBackground(new Color(245, 245, 245));
 		contentPane.add(txtBuscar);
 		txtBuscar.setColumns(10);
-		
+
 		
 		JLabel lblNewLabel_4 = new JLabel("SISTEMA DE BÚSQUEDA");
 		lblNewLabel_4.setForeground(new Color(12, 138, 199));
 		lblNewLabel_4.setFont(new Font("Roboto Black", Font.BOLD, 24));
-		lblNewLabel_4.setBounds(331, 62, 280, 42);
+		lblNewLabel_4.setBounds(331, 62, 320, 42);
 		contentPane.add(lblNewLabel_4);
 		
 		JTabbedPane panel = new JTabbedPane(JTabbedPane.TOP);
@@ -198,7 +212,21 @@ public class Busqueda extends JFrame {
 		btnbuscar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-
+				try {
+					EntityManager em = UtilsJPA.getEntityManager();
+					ReservasDAO reservasDAO = new ReservasDAO(em);
+					Reserva reserva = reservasDAO.find(Integer.valueOf(txtBuscar.getText()));
+					modelo.getDataVector().clear();
+					modelo.addRow(new Object[]{
+							reserva.getId(),
+							reserva.getFechaEntrada(),
+							reserva.getFechaSalida(),
+							reserva.getValor(),
+							reserva.getFormaPago()
+					});
+				} catch (Exception err) {
+					JOptionPane.showMessageDialog(null, err.getMessage());
+				}
 			}
 		});
 		btnbuscar.setLayout(null);
@@ -215,6 +243,26 @@ public class Busqueda extends JFrame {
 		lblBuscar.setFont(new Font("Roboto", Font.PLAIN, 18));
 		
 		JPanel btnEditar = new JPanel();
+		btnEditar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Optional.ofNullable(modelo.getValueAt(tbReservas.getSelectedRow(), tbReservas.getSelectedColumn()))
+						.ifPresentOrElse(fila -> {
+							Integer id = Integer.valueOf(modelo.getValueAt(tbReservas.getSelectedRow(), 0).toString());
+							Date fechaEntrada = new Date(modelo.getValueAt(tbReservas.getSelectedRow(), 1).toString());
+							Date fechaSalida = new Date(modelo.getValueAt(tbReservas.getSelectedRow(), 2).toString());
+							Integer valor = Integer.valueOf(modelo.getValueAt(tbReservas.getSelectedRow(), 3).toString());
+							String formaPago = modelo.getValueAt(tbReservas.getSelectedRow(), 4).toString();
+
+							Reserva reserva = new Reserva(id, fechaEntrada, fechaSalida, valor, formaPago);
+
+							ReservasController reservasController = new ReservasController();
+							reservasController.editar(reserva);
+
+							JOptionPane.showMessageDialog(null, "Datos actualizados");
+						}, () -> JOptionPane.showMessageDialog(null, "Selecciona un item"));
+			}
+		});
 		btnEditar.setLayout(null);
 		btnEditar.setBackground(new Color(12, 138, 199));
 		btnEditar.setBounds(635, 508, 122, 35);
@@ -229,6 +277,24 @@ public class Busqueda extends JFrame {
 		btnEditar.add(lblEditar);
 		
 		JPanel btnEliminar = new JPanel();
+		btnEliminar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Optional.ofNullable(modeloHuesped.getValueAt(tbHuespedes.getSelectedRow(), tbHuespedes.getSelectedColumn()))
+						.ifPresentOrElse(fila -> {
+							Integer id = Integer.valueOf(modeloHuesped.getValueAt(tbHuespedes.getSelectedRow(), 0).toString());
+
+							HuespedesController huespedesController = new HuespedesController();
+							Huesped huesped = huespedesController.find(id);
+							huespedesController.delete(huesped);
+//							ReservasController reservasController = new ReservasController();
+//							Reserva reserva = reservasController.find(id);
+//							reservasController.delete(reserva);
+							modeloHuesped.removeRow(tbHuespedes.getSelectedRow());
+							JOptionPane.showMessageDialog(null, String.format("Item eliminado con éxito!"));
+						}, () -> JOptionPane.showMessageDialog(null, "Please choose a item"));
+			}
+		});
 		btnEliminar.setLayout(null);
 		btnEliminar.setBackground(new Color(12, 138, 199));
 		btnEliminar.setBounds(767, 508, 122, 35);
@@ -242,6 +308,34 @@ public class Busqueda extends JFrame {
 		lblEliminar.setBounds(0, 0, 122, 35);
 		btnEliminar.add(lblEliminar);
 		setResizable(false);
+
+
+		EntityManager em = UtilsJPA.getEntityManager();
+		ReservasDAO reservasDAO = new ReservasDAO(em);
+		List<Reserva> listReservas = reservasDAO.list();
+
+		HuespedesDAO huespedesDAO = new HuespedesDAO(em);
+		List<Huesped> listHuesped = huespedesDAO.list();
+
+		DateFormat formatDate = DateFormat.getDateInstance(DateFormat.MEDIUM);
+
+		listReservas.forEach(reserva -> modelo.addRow(new Object[] {
+				reserva.getId(),
+				formatDate.format(reserva.getFechaEntrada()),
+				formatDate.format(reserva.getFechaSalida()),
+				reserva.getValor(),
+				reserva.getFormaPago(),
+		}));
+
+		listHuesped.forEach(huesped -> modeloHuesped.addRow(new Object[]{
+				huesped.getId(),
+				huesped.getNombre(),
+				huesped.getApellido(),
+				huesped.getFechaNacimiento(),
+				huesped.getNacionalidad(),
+				huesped.getTelefono(),
+				huesped.getReserva().getId()
+		}));
 	}
 	
 //Código que permite mover la ventana por la pantalla según la posición de "x" y "y"

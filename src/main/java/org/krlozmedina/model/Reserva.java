@@ -8,19 +8,36 @@ import java.util.Date;
 public class Reserva {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id",nullable = false)
     private Integer id;
-    private Date fecha_entrada;
-    private Date fecha_salida;
+
+    @Column(name = "fecha_entrada")
+    private Date fechaEntrada;
+
+    @Column(name = "fecha_salida")
+    private Date fechaSalida;
+
+    @Column(name = "valor")
     private Integer valor;
-    private String forma_pago;
+
+    @Column(name = "forma_pago")
+    private String formaPago;
 
     public Reserva() {}
 
-    public Reserva(Date fecha_entrada, Date fecha_salida, Integer valor, String forma_pago) {
-        this.fecha_entrada = fecha_entrada;
-        this.fecha_salida = fecha_salida;
+    public Reserva(Date fechaEntrada, Date fechaSalida, Integer valor, String formaPago) {
+        this.fechaEntrada = fechaEntrada;
+        this.fechaSalida = fechaSalida;
         this.valor = valor;
-        this.forma_pago = forma_pago;
+        this.formaPago = formaPago;
+    }
+
+    public Reserva(Integer id, Date fechaEntrada, Date fechaSalida, Integer valor, String formaPago) {
+        this.id = id;
+        this.fechaEntrada = fechaEntrada;
+        this.fechaSalida = fechaSalida;
+        this.valor = valor;
+        this.formaPago = formaPago;
     }
 
     public Integer getId() {
@@ -31,20 +48,20 @@ public class Reserva {
         this.id = id;
     }
 
-    public Date getFecha_entrada() {
-        return fecha_entrada;
+    public Date getFechaEntrada() {
+        return fechaEntrada;
     }
 
-    public void setFecha_entrada(Date fecha_entrada) {
-        this.fecha_entrada = fecha_entrada;
+    public void setFechaEntrada(Date fechaEntrada) {
+        this.fechaEntrada = fechaEntrada;
     }
 
-    public Date getFecha_salida() {
-        return fecha_salida;
+    public Date getFechaSalida() {
+        return fechaSalida;
     }
 
-    public void setFecha_salida(Date fecha_salida) {
-        this.fecha_salida = fecha_salida;
+    public void setFechaSalida(Date fechaSalida) {
+        this.fechaSalida = fechaSalida;
     }
 
     public Integer getValor() {
@@ -55,11 +72,11 @@ public class Reserva {
         this.valor = valor;
     }
 
-    public String getForma_pago() {
-        return forma_pago;
+    public String getFormaPago() {
+        return formaPago;
     }
 
-    public void setForma_pago(String forma_pago) {
-        this.forma_pago = forma_pago;
+    public void setFormaPago(String formaPago) {
+        this.formaPago = formaPago;
     }
 }

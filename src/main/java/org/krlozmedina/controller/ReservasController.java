@@ -9,7 +9,7 @@ import java.util.Date;
 
 public class ReservasController {
 
-    public static Integer save(Date fechaEntrada, Date fechaSalida, Integer valor, String formaPago) {
+    public static Reserva save(Date fechaEntrada, Date fechaSalida, Integer valor, String formaPago) {
         Reserva reserva = new Reserva(fechaEntrada, fechaSalida, valor, formaPago);
         EntityManager em = UtilsJPA.getEntityManager();
         ReservasDAO reservasDAO = new ReservasDAO(em);
@@ -19,6 +19,32 @@ public class ReservasController {
         em.getTransaction().commit();
         em.close();
 
-        return reserva.getId();
+        return reserva;
+    }
+
+    public void editar(Reserva reserva){
+        EntityManager em = UtilsJPA.getEntityManager();
+
+        em.getTransaction().begin();
+        em.merge(reserva);
+        em.getTransaction().commit();
+        em.close();
+    }
+
+    public Reserva find (Integer id) {
+        EntityManager em = UtilsJPA.getEntityManager();
+        ReservasDAO reservasDAO = new ReservasDAO(em);
+
+        return reservasDAO.find(id);
+    }
+
+    public void delete(Reserva reserva) {
+        EntityManager em = UtilsJPA.getEntityManager();
+        ReservasDAO reservasDAO = new ReservasDAO(em);
+
+        em.getTransaction().begin();
+        reservasDAO.delete(reserva);
+        em.getTransaction().commit();
+        em.close();
     }
 }

@@ -103,7 +103,6 @@ public class Login extends JFrame {
 			public void mousePressed(MouseEvent e) {
 				 if (txtUsuario.getText().equals("Ingrese su nombre de usuario")) {
 					 txtUsuario.setText("");
-					 txtUsuario.setForeground(Color.black);
 			        }
 			        if (String.valueOf(txtContrasena.getPassword()).isEmpty()) {
 			        	txtContrasena.setText("********");
@@ -114,7 +113,8 @@ public class Login extends JFrame {
 		txtUsuario.setFont(new Font("Roboto", Font.PLAIN, 16));
 		txtUsuario.setText("Ingrese su nombre de usuario");
 		txtUsuario.setBorder(javax.swing.BorderFactory.createEmptyBorder());
-		txtUsuario.setForeground(SystemColor.activeCaptionBorder);
+//		txtUsuario.setForeground(SystemColor.activeCaptionBorder);
+		txtUsuario.setForeground(Color.black);
 		txtUsuario.setBounds(65, 256, 324, 32);
 		panel.add(txtUsuario);
 		txtUsuario.setColumns(10);
@@ -142,7 +142,6 @@ public class Login extends JFrame {
 			public void mousePressed(MouseEvent e) {
 				if (String.valueOf(txtContrasena.getPassword()).equals("********")) {
 					txtContrasena.setText("");
-					txtContrasena.setForeground(Color.black);
 		        }
 		        if (txtUsuario.getText().isEmpty()) {
 		        	txtUsuario.setText("Ingrese su nombre de usuario");
@@ -150,7 +149,8 @@ public class Login extends JFrame {
 		        }
 			}
 		});
-		txtContrasena.setForeground(SystemColor.activeCaptionBorder);
+//		txtContrasena.setForeground(SystemColor.activeCaptionBorder);
+		txtContrasena.setForeground(Color.black);
 		txtContrasena.setFont(new Font("Roboto", Font.PLAIN, 16));
 		txtContrasena.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		txtContrasena.setBounds(65, 353, 324, 32);
@@ -224,8 +224,8 @@ public class Login extends JFrame {
 	}
 	
 	private void Login() {
-		 String Usuario= "Krloz Medina";
-	     String Contraseña="abc1234yz";
+		 String Usuario= "admin";
+	     String Contraseña="admin";
 
 	        String contrase=new String (txtContrasena.getPassword());
 

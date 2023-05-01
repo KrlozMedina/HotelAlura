@@ -1,5 +1,7 @@
 package org.krlozmedina.model;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -8,26 +10,37 @@ import java.util.Date;
 public class Huesped {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private Integer id;
+
+    @Column(name = "nombre")
     private String nombre;
+
+    @Column(name = "apellido")
     private String apellido;
-    private Date fecha_nacimiento;
+
+    @Column(name = "fecha_nacimiento")
+    private Date fechaNacimiento;
+
+    @Column(name = "nacionalidad")
     private String nacionalidad;
+
+    @Column(name = "telefono")
     private long telefono;
 
-//    @ManyToOne
-    private Integer id_reserva;
+    @ManyToOne
+    private Reserva reserva;
 
     public Huesped() {
     }
 
-    public Huesped(String nombre, String apellido, Date fecha_nacimiento, String nacionalidad, long telefono, Integer id_reserva) {
+    public Huesped(String nombre, String apellido, Date fechaNacimiento, String nacionalidad, long telefono, Reserva reserva) {
         this.nombre = nombre;
         this.apellido = apellido;
-        this.fecha_nacimiento = fecha_nacimiento;
+        this.fechaNacimiento = fechaNacimiento;
         this.nacionalidad = nacionalidad;
         this.telefono = telefono;
-        this.id_reserva = id_reserva;
+        this.reserva = reserva;
     }
 
     public Integer getId() {
@@ -54,12 +67,12 @@ public class Huesped {
         this.apellido = apellido;
     }
 
-    public Date getFecha_nacimiento() {
-        return fecha_nacimiento;
+    public Date getFechaNacimiento() {
+        return fechaNacimiento;
     }
 
-    public void setFecha_nacimiento(Date fecha_nacimiento) {
-        this.fecha_nacimiento = fecha_nacimiento;
+    public void setFechaNacimiento(Date fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
 
     public String getNacionalidad() {
@@ -78,11 +91,11 @@ public class Huesped {
         this.telefono = telefono;
     }
 
-    public Integer getId_reserva() {
-        return id_reserva;
+    public Reserva getReserva() {
+        return reserva;
     }
 
-    public void setId_reserva(Integer id_reserva) {
-        this.id_reserva = id_reserva;
+    public void setReserva(Reserva reserva) {
+        this.reserva = reserva;
     }
 }
