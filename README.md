@@ -45,7 +45,7 @@ del proyecto puso a disposición un Diagrama de Entidad Relación que usaremos
 para crear las tablas en nuestra base de Datos y que está anexado a esta
 tarjeta y que también estará como una tarea en nuestro backlog de [Trello](https://trello.com/b/ChK4w5Be/challenge-2-alura).
 
-![Diagrama de entidad-relacion](Images/Diagrama entidad-relacion.png)
+![Diagrama de entidad-relacion](https://user-images.githubusercontent.com/78941509/236509745-0a553c30-5bb9-41cf-9def-8903196410d7.png)
 
 ## Tabla de contenido
 
